@@ -90,7 +90,7 @@ def verify_main(args):
     VerifyPackingSlip(args.pslip[0])
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(prog='pslip')
     sub_parsers = parser.add_subparsers(help='sub-command help')
 
@@ -117,3 +117,7 @@ if __name__ == '__main__':
     except AttributeError:
         parser.print_usage()
         sys.exit(1)
+
+
+if __name__ == '__main__':
+    main()

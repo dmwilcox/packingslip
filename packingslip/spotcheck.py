@@ -49,10 +49,13 @@ def main(args):
         print('{:40} | {:40}'.format(local_hash, remote_hash))
 
 
-if __name__ == '__main__':
+def dispatch_main():
     parser = argparse.ArgumentParser(prog='pslip')
     parser.add_argument('files', nargs='+',
                          help='Files followed by a directory')
     args = parser.parse_args(sys.argv[1:])
     main(args)
 
+
+if __name__ == '__main__':
+    dispatch_main()
