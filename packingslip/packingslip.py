@@ -91,7 +91,7 @@ def verify_main(args):
 
 
 def main():
-    parser = argparse.ArgumentParser(prog='pslip')
+    parser = argparse.ArgumentParser(prog='packingslip')
     sub_parsers = parser.add_subparsers(help='sub-command help')
 
     parser_create = sub_parsers.add_parser('create', help='create help')

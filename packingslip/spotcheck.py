@@ -50,7 +50,7 @@ def main(args):
 
 
 def dispatch_main():
-    parser = argparse.ArgumentParser(prog='pslip')
+    parser = argparse.ArgumentParser(prog='spotcheck')
     parser.add_argument('files', nargs='+',
                          help='Files followed by a directory')
     args = parser.parse_args(sys.argv[1:])
