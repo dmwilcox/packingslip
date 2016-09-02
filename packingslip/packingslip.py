@@ -1,6 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+Some to-do items:
+- handle renames of top level directory, by say removing it from the key, etc.
+- if a directory of files only on one side, roll up missing files to be the
+  directory on exclusively one side, like git
+- do reverse check using hashs to detect renames, and figure how to handle that
+- for differences better label what hash came from where
+- add verbose mode
+- automagically look for index.plist under provided directory, even if not top
+  level
+"""
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -72,14 +84,19 @@ def PrintDictDiff(src, dst):
         if src[k] != dst[k]:
             print('{} differs!'.format(k))
             print('{:40} | {:40}'.format(src[k], dst[k]))
-        else:
-            print('{} is identical'.format(k)) 
-    print('Following keys exist only in src:\n{}'.format(
-        '\n'.join(src_keys - dst_keys))
-    )
-    print('Following keys exist only in dst:\n{}'.format(
-        '\n'.join(dst_keys - src_keys))
-    )
+        #TODO add printing of identical records under a verbose mode
+        #else:
+            #print('{} is identical'.format(k))
+    exclusively_src = src_keys - dst_keys
+    exclusively_dst = dst_keys - src_keys
+    if exclusively_src:
+        print('Following keys exist only in src:\n{}'.format(
+            '\n'.join(exclusively_src))
+        )
+    if exclusively_dst:
+        print('Following keys exist only in dst:\n{}'.format(
+            '\n'.join(exclusively_dst))
+        )
 
 
 def create_main(args):

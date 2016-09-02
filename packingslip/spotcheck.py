@@ -22,7 +22,7 @@ def GetHash(filepath):
         out, _ = p.communicate()
     except:
         raise
-    out_str = out.encode('utf-8')
+    out_str = out.decode('utf-8')
     if p.returncode != 0:
         return None
     return out_str.split()[0]
